@@ -6,6 +6,9 @@
     "start": "echo 'Frontend is static - open index.html in browser'",
     "dev": "echo 'Open index.html or login.html in your browser'"
   },
+  "engines": {
+    "node": "24.x"
+  },
   "keywords": ["frontend", "static", "html", "css", "javascript"],
   "author": "Chanikya Chowdary",
   "license": "MIT"
