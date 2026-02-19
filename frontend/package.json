@@ -1,8 +1,12 @@
 {
   "name": "job-search-frontend",
   "version": "1.0.0",
-  "description": "Job Search Portal Frontend",
+  "description": "Job Search Portal Frontend - Static HTML/CSS/JS",
   "scripts": {
-    "start": "echo 'Frontend is static - open index.html'"
-  }
+    "start": "echo 'Frontend is static - open index.html in browser'",
+    "dev": "echo 'Open index.html or login.html in your browser'"
+  },
+  "keywords": ["frontend", "static", "html", "css", "javascript"],
+  "author": "Chanikya Chowdary",
+  "license": "MIT"
 }

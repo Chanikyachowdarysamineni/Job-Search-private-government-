@@ -1,11 +1,22 @@
 {
   "name": "job-search-portal",
   "version": "1.0.0",
+  "description": "Job Search Portal - Government and Private Sector Jobs",
+  "main": "backend/server.js",
   "scripts": {
     "start": "cd backend && node server.js",
-    "install": "cd backend && npm install"
+    "dev": "cd backend && node server.js",
+    "postinstall": "cd backend && npm install"
   },
   "engines": {
-    "node": ">=14.x"
-  }
+    "node": ">=14.x",
+    "npm": ">=6.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chanikyachowdarysamineni/Job-Search-private-government-.git"
+  },
+  "keywords": ["jobs", "government", "private-sector", "job-portal"],
+  "author": "Chanikya Chowdary",
+  "license": "MIT"
 }
