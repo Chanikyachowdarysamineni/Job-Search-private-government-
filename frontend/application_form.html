@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #2c3e50; /* Dark blue for header */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-header {
+            font-size: 20px;
+            color: #34495e; /* Dark gray for section headers */
+            margin: 20px 0 10px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db; /* Blue underline */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #34495e; /* Dark gray for labels */
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #333;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #3498db; /* Blue border on focus */
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input[type="file"] {
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .form-group .inline-fields {
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-group .inline-fields .field {
+            flex: 1;
+        }
+
+        .form-group .address-field {
+            margin-bottom: 15px; /* Space between address fields */
+        }
+
+        /* Submit Button */
+        .submit-button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #3498db, #2980b9); /* Gradient blue */
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(135deg, #2980b9, #1c6ea4); /* Darker gradient on hover */
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .section-header {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Application</h1>
+        <form action="http://localhost:5000/api/apply" method="POST" enctype="multipart/form-data">
+            <!-- Personal Information Section -->
+            <div class="section-header">Personal Information</div>
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <div class="inline-fields">
+                    <div class="field">
+                        <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shift Date -->
+            <div class="form-group">
+                <label for="shift-date">Shift Date</label>
+                <div class="inline-fields">
+                    <div class="field">
+                        <select id="month" name="month" required>
+                            <option value="">Month</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <select id="day" name="day" required>
+                            <option value="">Day</option>
+                            <script>
+                                for (let i = 1; i <= 31; i++) {
+                                    document.write(`<option value="${i}">${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <select id="year" name="year" required>
+                            <option value="">Year</option>
+                            <script>
+                                const currentYear = new Date().getFullYear();
+                                for (let i = currentYear; i >= 1900; i--) {
+                                    document.write(`<option value="${i}">${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <hr>
+
+            <!-- Address Section -->
+            <div class="section-header">Address</div>
+            <div class="form-group">
+                <label for="current-address">Current Address</label>
+                <div class="address-field">
+                    <input type="text" id="current-address" name="current-address" placeholder="Street Address Line 1" required>
+                </div>
+                <div class="address-field">
+                    <input type="text" id="current-address-2" name="current-address-2" placeholder="Street Address Line 2">
+                </div>
+                <div class="address-field">
+                    <input type="text" id="city" name="city" placeholder="City" required>
+                </div>
+                <div class="inline-fields">
+                    <div class="field">
+                        <input type="text" id="state" name="state" placeholder="State / Province" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <hr>
+
+            <!-- Contact Details Section -->
+            <div class="section-header">Contact Details</div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="example@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="000-000-0000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="linkedin">LinkedIn Profile</label>
+                <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+            </div>
+
+            <!-- Divider -->
+            <hr>
+
+            <!-- Job Details Section -->
+            <div class="section-header">Job Details</div>
+            <div class="form-group">
+                <label for="position">Position Applied</label>
+                <select id="position" name="position" required>
+                    <option value="">Please Select</option>
+                    <option value="software-engineer">Software Engineer</option>
+                    <option value="marketing-manager">Marketing Manager</option>
+                    <option value="graphic-designer">Graphic Designer</option>
+                    <option value="data-analyst">Data Analyst</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="hear-about-us">How Did You Hear About Us?</label>
+                <select id="hear-about-us" name="hear-about-us" required>
+                    <option value="">Please Select</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="friend">Friend</option>
+                    <option value="job-board">Job Board</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="start-date">Available Start Date</label>
+                <input type="date" id="start-date" name="start-date" required>
+            </div>
+
+            <!-- Divider -->
+            <hr>
+
+            <!-- Resume and Cover Letter Section -->
+            <div class="section-header">Resume and Cover Letter</div>
+            <div class="form-group">
+                <label for="resume">Upload Your Resume</label>
+                <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
+            </div>
+
+            <div class="form-group">
+                <label for="cover-letter">Cover Letter</label>
+                <textarea id="cover-letter" name="cover-letter" placeholder="Write your cover letter here..." required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="submit-button">Apply</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.querySelector("form").addEventListener("submit", async function (e) {
+            e.preventDefault(); // Prevent default form submission
+    
+            const formData = new FormData(this);
+    
+            try {
+                const response = await axios.post("http://localhost:5000/api/apply", formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    }
+                });
+    
+                console.log("Server Response:", response.data);
+                alert("Application submitted successfully!");
+            } catch (error) {
+                console.error("Submission Error:", error);
+                alert("Failed to submit application. Please try again.");
+            }
+        });
+    </script>
+    
+    
+</body>
+</html>

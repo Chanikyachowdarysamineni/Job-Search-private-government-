@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Heading Styles */
+        .heading {
+            text-align: center;
+            font-size: 36px;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Container for Blocks */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Individual Block Styles */
+        .block {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hover Effect for Blocks */
+        .block:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Block Heading */
+        .block h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        /* Block Paragraph */
+        .block p {
+            color: #666;
+        }
+
+        /* Unique Background Colors for Each Block */
+        .block:nth-child(1) { background-color: #e3f2fd; } /* Government Hospitals (AIIMS, PGIMER, JIPMER) */
+        .block:nth-child(2) { background-color: #fff3e0; } /* Public Health Departments */
+        .block:nth-child(3) { background-color: #fbe9e7; } /* National Rural Health Mission (NRHM) */
+        .block:nth-child(4) { background-color: #e8f5e9; } /* State Health Departments */
+        .block:nth-child(5) { background-color: #f3e5f5; } /* Defence Medical Services */
+        .block:nth-child(6) { background-color: #e0f7fa; } /* Indian Council of Medical Research (ICMR) */
+        .block:nth-child(7) { background-color: #fff8e1; } /* Pharmaceutical Public Sector Units (PSUs) */
+        .block:nth-child(8) { background-color: #f1f8e9; } /* Medical Education & Research Institutes */
+        .block:nth-child(9) { background-color: #ede7f6; } /* Ayush Ministry Jobs (Ayurveda, Homeopathy, Yoga) */
+        .block:nth-child(10) { background-color: #ffccbc; } /* Health & Family Welfare Department */
+
+        /* Back Button Styles */
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+
+        /* Arrow Button Styles */
+        .arrow-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .arrow-button:hover {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Heading -->
+    <h1 class="heading">Healthcare</h1>
+
+    <!-- Container for Blocks -->
+    <div class="container">
+        <!-- Government Hospitals (AIIMS, PGIMER, JIPMER) -->
+        <div class="block">
+            <h2>Government Hospitals (AIIMS, PGIMER, JIPMER)</h2>
+            <p>Work in premier government hospitals and medical institutions.</p>
+            <button class="arrow-button">→</button>
+        </div>
+
+        <!-- Public Health Departments -->
+        <div class="block">
+            <h2>Public Health Departments</h2>
+            <p>Contribute to public health initiatives and programs.</p>
+            <button class="arrow-button">→</button>
+        </div>
+
+        <!-- National Rural Health Mission (NRHM) -->
+        <div class="block">
+            <h2>National Rural Health Mission (NRHM)</h2>
+            <p>Improve healthcare delivery in rural areas.</p>
+            <button class="arrow-button">→</button>
+        </div>
+
+        <!-- State Health Departments -->
+        <div class="block">
+            <h2>State Health Departments</h2>
+            <p>Work in state-level healthcare administration and services.</p>
+            <button class="arrow-button">→</button>
+        </div>
+
+        <!-- Defence Medical Services -->
+        <div class="block">
+            <h2>Defence Medical Services</h2>
+            <p>Provide medical care to armed forces personnel.</p>
+            <button class="arrow-button">→</button>
+        </div>
+
+        <!-- Indian Council of Medical Research (ICMR) -->
+        <div class="block">
+            <h2>Indian Council of Medical Research (ICMR)</h2>
+            <p>Engage in medical research and development.</p>
+            <button class="arrow-button">→</button>
+        </div>
+
+        <!-- Pharmaceutical Public Sector Units (PSUs) -->
+        <div class="block">
+            <h2>Pharmaceutical Public Sector Units (PSUs)</h2>
+            <p>Work in government-owned pharmaceutical companies.</p>
+            <button class="arrow-button">→</button>
+        </div>
+
+        <!-- Medical Education & Research Institutes -->
+        <div class="block">
+            <h2>Medical Education & Research Institutes</h2>
+            <p>Teach and conduct research in medical sciences.</p>
+            <button class="arrow-button">→</button>
+        </div>
+
+        <!-- Ayush Ministry Jobs (Ayurveda, Homeopathy, Yoga) -->
+        <div class="block">
+            <h2>Ayush Ministry Jobs (Ayurveda, Homeopathy, Yoga)</h2>
+            <p>Promote traditional and alternative medicine systems.</p>
+            <button class="arrow-button">→</button>
+        </div>
+
+        <!-- Health & Family Welfare Department -->
+        <div class="block">
+            <h2>Health & Family Welfare Department</h2>
+            <p>Work on healthcare policies and family welfare programs.</p>
+            <button class="arrow-button">→</button>
+        </div>
+
+        <!-- Back Button -->
+        <button class="back-button" onclick="goBack()">Back</button>
+    </div>
+
+    <script>
+        // JavaScript function to go back to the previous page
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

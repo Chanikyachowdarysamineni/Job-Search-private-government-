@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blockchain Fields</title>
+  <style>
+    :root {
+      --primary-bg: #f0f7ff;
+      --header-bg: linear-gradient(135deg, #4da6ff, #0077cc);
+      --card-bg: #ffffff;
+      --accent-blue: #4da6ff;
+      --text-dark: #2c3e50;
+      --text-muted: #566573;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    header {
+      position: relative;
+      background: var(--header-bg);
+      padding: 3rem 2rem;
+      border-radius: 0 0 1.5rem 1.5rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      text-align: center;
+      color: white;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1;
+      pointer-events: none;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1s ease-out;
+    }
+    header p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1.2s ease-out;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    section.available-fields {
+      padding: 3rem 2rem;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--text-dark);
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .job-card {
+      background-color: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 6px 12px var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .job-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    .job-card h2 {
+      font-size: 1.4rem;
+      color: var(--accent-blue);
+      margin-bottom: 0.5rem;
+    }
+    .job-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .job-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+    .job-card ul {
+      list-style-type: disc;
+      padding-left: 1.2rem;
+    }
+    .job-card li {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-muted);
+    }
+    .job-card button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      background-color: var(--accent-blue);
+      color: white;
+      font-weight: bold;
+      font-size: 0.95rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .job-card button:hover {
+      background-color: #3399ff;
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      section h2 {
+        font-size: 1.6rem;
+      }
+    }
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 0.9rem;
+      }
+      section h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Blockchain Field</h1>
+    <p>
+      Blockchain technology involves creating decentralized systems for secure and transparent transactions. It's used in cryptocurrencies, smart contracts, supply chain management, and more. Freshers earn ₹4–10 lakh, mid-level ₹10–25 lakh, and experienced professionals ₹25–50 lakh. Senior roles can exceed ₹1 crore annually.
+    </p>
+  </header>
+  <section class="available-fields">
+    <h2>Available Roles</h2>
+    <div class="container">
+      <!-- Job Cards -->
+      <div class="job-card">
+        <h2>Blockchain Developer</h2>
+        <p>Develop decentralized applications and smart contracts using blockchain frameworks.</p>
+        <h3>Eligibility Criteria</h3>
+        <ul>
+          <li>Bachelor’s degree in Computer Science or related field.</li>
+          <li>Proficiency in blockchain platforms (Ethereum, Hyperledger).</li>
+          <li>Experience with programming languages (Solidity, JavaScript).</li>
+          <li>Certifications like Certified Blockchain Developer are preferred.</li>
+        </ul>
+        <button>Go to</button>
+      </div>
+      <div class="job-card">
+        <h2>Smart Contract Engineer</h2>
+        <p>Write, deploy, and audit smart contracts for blockchain platforms like Ethereum.</p>
+        <h3>Eligibility Criteria</h3>
+        <ul>
+          <li>Bachelor’s degree in IT or related field.</li>
+          <li>Strong understanding of Solidity and smart contract development.</li>
+          <li>Experience with security audits and vulnerability testing.</li>
+          <li>Certifications like Certified Smart Contract Auditor are preferred.</li>
+        </ul>
+        <button>Go to</button>
+      </div>
+      <div class="job-card">
+        <h2>Cryptocurrency Analyst</h2>
+        <p>Analyze cryptocurrency markets and trends to guide investment strategies.</p>
+        <h3>Eligibility Criteria</h3>
+        <ul>
+          <li>Bachelor’s degree in Finance or related field.</li>
+          <li>Experience in analyzing financial markets and trading strategies.</li>
+          <li>Strong knowledge of blockchain and cryptocurrency ecosystems.</li>
+          <li>Certifications like Cryptocurrency Certification Program are preferred.</li>
+        </ul>
+        <button>Go to</button>
+      </div>
+      <div class="job-card">
+        <h2>Blockchain Architect</h2>
+        <p>Design and implement blockchain solutions for businesses and organizations.</p>
+        <h3>Eligibility Criteria</h3>
+        <ul>
+          <li>Bachelor’s degree in IT or related field.</li>
+          <li>Experience in designing distributed systems and blockchain networks.</li>
+          <li>Strong understanding of consensus algorithms and cryptography.</li>
+          <li>Certifications like Certified Blockchain Architect are preferred.</li>
+        </ul>
+        <button>Go to</button>
+      </div>
+      <div class="job-card">
+        <h2>Security Specialist</h2>
+        <p>Ensure the security and integrity of blockchain networks and applications.</p>
+        <h3>Eligibility Criteria</h3>
+        <ul>
+          <li>Bachelor’s degree in Cybersecurity or related field.</li>
+          <li>Experience with blockchain security tools and protocols.</li>
+          <li>Strong knowledge of cryptography and network security.</li>
+          <li>Certifications like Certified Blockchain Security Professional are preferred.</li>
+        </ul>
+        <button>Go to</button>
+      </div>
+      <div class="job-card">
+        <h2>Decentralized App Developer</h2>
+        <p>Build decentralized applications (dApps) that run on blockchain platforms.</p>
+        <h3>Eligibility Criteria</h3>
+        <ul>
+          <li>Bachelor’s degree in IT or related field.</li>
+          <li>Proficiency in dApp development frameworks (Truffle, Web3.js).</li>
+          <li>Experience with front-end and back-end integration.</li>
+          <li>Certifications like Certified dApp Developer are preferred.</li>
+        </ul>
+        <button>Go to</button>
+      </div>
+      <div class="job-card">
+        <h2>Blockchain Consultant</h2>
+        <p>Advise businesses on implementing blockchain technology for their needs.</p>
+        <h3>Eligibility Criteria</h3>
+        <ul>
+          <li>Bachelor’s degree in Business or IT-related field.</li>
+          <li>Experience in consulting and project management.</li>
+          <li>Strong understanding of blockchain use cases and benefits.</li>
+          <li>Certifications like Certified Blockchain Consultant are preferred.</li>
+        </ul>
+        <button>Go to</button>
+      </div>
+      <div class="job-card">
+        <h2>Crypto Trader</h2>
+        <p>Trade cryptocurrencies on exchanges and analyze market movements.</p>
+        <h3>Eligibility Criteria</h3>
+        <ul>
+          <li>No specific degree required, but finance or economics background is helpful.</li>
+          <li>Experience in trading and technical analysis.</li>
+          <li>Strong knowledge of cryptocurrency markets and trends.</li>
+          <li>Certifications like Crypto Trading Certification are preferred.</li>
+        </ul>
+        <button>Go to</button>
+      </div>
+      <div class="job-card">
+        <h2>Tokenization Specialist</h2>
+        <p>Create and manage tokenized assets on blockchain platforms.</p>
+        <h3>Eligibility Criteria</h3>
+        <ul>
+          <li>Bachelor’s degree in Finance or IT-related field.</li>
+          <li>Experience in tokenization platforms and protocols.</li>
+          <li>Strong understanding of asset-backed tokens and digital assets.</li>
+          <li>Certifications like Certified Tokenization Expert are preferred.</li>
+        </ul>
+        <button>Go to</button>
+      </div>
+      <div class="job-card">
+        <h2>Blockchain Project Manager</h2>
+        <p>Oversee the development and deployment of blockchain projects.</p>
+        <h3>Eligibility Criteria</h3>
+        <ul>
+          <li>Bachelor’s degree in IT or Business Management.</li>
+          <li>Experience in managing blockchain or software development projects.</li>
+          <li>Strong leadership and communication skills.</li>
+          <li>Certifications like PMP or Agile Certified Practitioner are preferred.</li>
+        </ul>
+        <button>Go to</button>
+      </div>
+      <div class="job-card">
+        <h2>Distributed Systems Engineer</h2>
+        <p>Work on the underlying distributed systems that power blockchain networks.</p>
+        <h3>Eligibility Criteria</h3>
+        <ul>
+          <li>Bachelor’s degree in Computer Science or related field.</li>
+          <li>Experience in distributed systems and peer-to-peer networks.</li>
+          <li>Strong knowledge of consensus algorithms and fault tolerance.</li>
+          <li>Certifications like Certified Distributed Systems Engineer are preferred.</li>
+        </ul>
+        <button>Go to</button>
+      </div>
+      <div class="job-card">
+        <h2>Regulatory Compliance Analyst</h2>
+        <p>Ensure blockchain solutions comply with legal and regulatory requirements.</p>
+        <h3>Eligibility Criteria</h3>
+        <ul>
+          <li>Bachelor’s degree in Law, Compliance, or related field.</li>
+          <li>Experience in regulatory compliance and risk management.</li>
+          <li>Strong knowledge of blockchain regulations (KYC, AML).</li>
+          <li>Certifications like Certified Blockchain Compliance Professional are preferred.</li>
+        </ul>
+        <button>Go to</button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

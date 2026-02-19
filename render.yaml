@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: job-search-portal
+    env: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: NODE_ENV
+        value: production

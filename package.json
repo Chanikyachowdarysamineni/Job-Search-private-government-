@@ -1,0 +1,11 @@
+{
+  "name": "job-search-portal",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cd backend && node server.js",
+    "install": "cd backend && npm install"
+  },
+  "engines": {
+    "node": ">=14.x"
+  }
+}

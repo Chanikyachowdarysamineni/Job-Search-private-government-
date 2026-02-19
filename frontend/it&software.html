@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .search-bar {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+
+        /* Job Listings */
+        .job-listings {
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .job-item {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: transform 0.3s ease;
+            height: 300px; /* Fixed height for uniformity */
+            width: 300px; /* Fixed width for uniformity */
+        }
+
+        .job-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .job-company {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .company-name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .job-details {
+            margin-bottom: 15px;
+            flex-grow: 1; /* Allow details to take available space */
+        }
+
+        .job-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .job-salary {
+            font-size: 16px;
+            color: #007bff;
+        }
+
+        .Go to-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .Go to-button:hover {
+            background-color: #218838;
+        }
+
+        /* Modal (Application Form) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            margin: 10px 0 5px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        form input,
+        form button {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        form input[type="file"] {
+            padding: 5px;
+        }
+
+        form button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .profile {
+                display: none;
+            }
+
+            .job-listings {
+                padding: 20px;
+            }
+
+            .modal-content {
+                width: 90%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search jobs..." oninput="filterJobs()">
+        </div>
+        <ul class="nav-links">
+            <li><a href="applied-jobs.html" id="applied-jobs-link">Applied Jobs</a></li>
+            <a href="private-sector.html" class="back-button">Back</a>
+        </ul>
+        
+    </nav>
+
+    <!-- Job Listings Section -->
+    <div class="job-listings" id="job-listings">
+        <div class="job-item">
+            <div class="job-company">
+                <img src="infosys.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Company Name</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Software Engineer</span><br>
+                <span class="job-salary">$66k - $75k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+
+        <div class="job-item">
+            <div class="job-company">
+                <img src="infosys.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Tech Co</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Frontend Developer</span><br>
+                <span class="job-salary">$55k - $65k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+
+        <div class="job-item">
+            <div class="job-company">
+                <img src="infosys.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Infosys</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Software Engineer</span><br>
+                <span class="job-salary">$66k - $75k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="microsoft.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Microsoft</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Full Stack Developer</span><br>
+                <span class="job-salary">$100k - $120k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        <div class="job-item">
+            <div class="job-company">
+                <img src="intruit.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Intuit</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Full Stack Developer</span><br>
+                <span class="job-salary">$100k - $120k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        <div class="job-item">
+            <div class="job-company">
+                <img src="google.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Google</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Data Scientist</span><br>
+                <span class="job-salary">$110k - $130k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="amazon.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Amazon</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Backend Developer</span><br>
+                <span class="job-salary">$85k - $100k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="facebook.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Facebook</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">DevOps Engineer</span><br>
+                <span class="job-salary">$90k - $110k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="apple.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Apple</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Software Engineer</span><br>
+                <span class="job-salary">$120k - $150k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="accenture.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Accenture</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Cloud Engineer</span><br>
+                <span class="job-salary">$95k - $115k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="ibm.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">IBM</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">AI Engineer</span><br>
+                <span class="job-salary">$105k - $125k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="oracle.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Oracle</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Database Administrator</span><br>
+                <span class="job-salary">$75k - $90k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="salesforce.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Salesforce</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Salesforce Developer</span><br>
+                <span class="job-salary">$95k - $110k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="tcs.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">TCS</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Cybersecurity Analyst</span><br>
+                <span class="job-salary">$85k - $100k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="zoho.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Zoho</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Backend Developer</span><br>
+                <span class="job-salary">$75k - $90k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="hp.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">HP</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Product Designer</span><br>
+                <span class="job-salary">$85k - $105k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="sap.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">SAP</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">SAP Consultant</span><br>
+                <span class="job-salary">$90k - $115k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="vmware.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">VMware</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Cloud Architect</span><br>
+                <span class="job-salary">$105k - $130k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="netflix.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Netflix</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Software Developer</span><br>
+                <span class="job-salary">$120k - $145k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="twitter.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Twitter</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Data Engineer</span><br>
+                <span class="job-salary">$105k - $125k per year</span>
+            </div>
+            <button class="z-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="reddit.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Reddit</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Mobile Developer</span><br>
+                <span class="job-salary">$90k - $110k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+
+            <div class="job-company">
+                <img src="snapchat.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Snapchat</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">AR Developer</span><br>
+                <span class="job-salary">$115k - $135k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="shopify.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Shopify</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">E-Commerce Developer</span><br>
+                <span class="job-salary">$95k - $115k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="discord.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Discord</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Backend Engineer</span><br>
+                <span class="job-salary">$100k - $125k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="slack.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Slack</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">UX/UI Designer</span><br>
+                <span class="job-salary">$95k - $115k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+        
+        <div class="job-item">
+            <div class="job-company">
+                <img src="stripe.jpg" alt="Company Logo" class="company-logo">
+                <span class="company-name">Stripe</span>
+            </div>
+            <div class="job-details">
+                <span class="job-title">Blockchain Developer</span><br>
+                <span class="job-salary">$115k - $140k per year</span>
+            </div>
+            <button class="Go to-button" onclick="openApplicationForm()">Go to</button>
+        </div>
+    </div>
+
+    <!-- Application Form Modal -->
+    <div id="application-form" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeApplicationForm()">×</span>
+            <h2>Job Application Form</h2>
+            <form id="application-form-content">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="resume">Upload Resume:</label>
+                <input type="file" id="resume" name="resume" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Form Modal -->
+    <div id="profile-form" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeProfileForm()">×</span>
+            <h2>Profile Details</h2>
+            <form id="profile-form-content">
+                <label for="user-name">Full Name:</label>
+                <input type="text" id="user-name" name="user-name" required>
+
+                <label for="user-email">Email:</label>
+                <input type="email" id="user-email" name="user-email" required>
+
+                <label for="user-phone">Phone Number:</label>
+                <input type="tel" id="user-phone" name="user-phone" required>
+
+                <label for="profile-image">Upload Profile Image:</label>
+                <input type="file" id="profile-image" name="profile-image" accept="image/*" required>
+
+                <button type="submit">Save Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function Go toJob(jobName) {
+  // Get the button and status span for the job
+  const jobDiv = event.target.closest('.job');
+  const statusSpan = jobDiv.querySelector('.status');
+  
+  // Change the button text to "Applied"
+  event.target.innerText = "Applied";
+  event.target.disabled = true; // Disable the button to prevent multiple clicks
+  
+  // Change the status message
+  statusSpan.innerText = "You have applied!";
+  
+  // Store the applied job name in applied_jobs.html (localStorage or an external file)
+  let appliedJobs = JSON.parse(localStorage.getItem('appliedJobs')) || [];
+  appliedJobs.push(jobName);
+  localStorage.setItem('appliedJobs', JSON.stringify(appliedJobs));
+  
+  // Optionally, you can log to the console to see the applied jobs
+  console.log("Applied Jobs: ", appliedJobs);
+}
+
+        // Open Job Application Form Modal
+        function openApplicationForm() {
+            document.getElementById("application-form").style.display = "flex";
+        }
+
+        // Close Job Application Form Modal
+        function closeApplicationForm() {
+            document.getElementById("application-form").style.display = "none";
+        }
+
+        // Open Profile Form Modal
+        function openProfileForm() {
+            document.getElementById("profile-form").style.display = "flex";
+        }
+
+        // Close Profile Form Modal
+        function closeProfileForm() {
+            document.getElementById("profile-form").style.display = "none";
+        }
+
+        // Submit Job Application Form
+        document.getElementById('application-form-content').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert("Your application has been submitted!");
+            closeApplicationForm();
+        });
+
+        // Submit Profile Form
+        document.getElementById('profile-form-content').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert("Your profile has been saved!");
+            closeProfileForm();
+        });
+
+        // Filter Jobs based on search input
+        function filterJobs() {
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const jobItems = document.querySelectorAll('.job-item');
+
+            jobItems.forEach(item => {
+                const title = item.querySelector('.job-title').textContent.toLowerCase();
+                const company = item.querySelector('.company-name').textContent.toLowerCase();
+                if (title.includes(input) || company.includes(input)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

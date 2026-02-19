@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmaceutical Manufacturing</title>
+
+    <!-- Embedded Styles -->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa; /* Soft gray-blue background */
+            text-align: left; /* Ensure overall text alignment is left */
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Soft blue gradient */
+            color: #333; /* Dark text for contrast */
+            padding: 1.5rem;
+            text-align: left; /* Left-align header content */
+            border-radius: 15px; /* Curved edges for the header */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1rem;
+            color: #555; /* Medium gray text */
+        }
+
+        /* Available Roles Section */
+        .available-fields {
+            padding: 2rem;
+        }
+        .available-fields h2 {
+            text-align: left; /* Left-align section heading */
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #444; /* Slightly darker gray for headings */
+        }
+
+        /* Job Card Container */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* Align cards to the left */
+            gap: 1.5rem; /* Added gap for better spacing */
+            padding: 0 1rem;
+        }
+
+        /* Individual Job Cards */
+        .job-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: calc(23% - 2rem); /* Adjusted width for better spacing */
+            padding: 1.5rem;
+            text-align: left; /* Ensure job card content is left-aligned */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Custom Background Colors for Job Cards (Soft Blue and Gray Tones) */
+        .job-card:nth-child(1) { background-color: #e3f2fd; } /* Light blue */
+        .job-card:nth-child(2) { background-color: #f5f5f5; } /* White smoke */
+        .job-card:nth-child(3) { background-color: #e8eaf6; } /* Pale indigo */
+        .job-card:nth-child(4) { background-color: #f8f8f8; } /* Light gray */
+        .job-card:nth-child(5) { background-color: #e3f2fd; } /* Subtle blue */
+        .job-card:nth-child(6) { background-color: #ffffff; } /* Pure white */
+        .job-card:nth-child(7) { background-color: #e8eaf6; } /* Soft indigo */
+        .job-card:nth-child(8) { background-color: #f5f5fc; } /* Very light purple */
+        .job-card:nth-child(9) { background-color: #fffafa; } /* Snow white */
+        .job-card:nth-child(10) { background-color: #e3f2fd; } /* Lemon chiffon */
+        .job-card:nth-child(11) { background-color: #f8f8fe; } /* Ice purple */
+        .job-card:nth-child(12) { background-color: #ffffff; } /* Pure white */
+
+        /* Hover Effects for Job Cards */
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Job Card Content Styling */
+        .job-card h2 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            color: #444; /* Slightly darker gray for headings */
+        }
+        .job-card p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            color: #666; /* Medium gray for text */
+        }
+
+        /* Button Styling */
+        .job-card button {
+            background-color: #bbdefb; /* Soft blue for buttons */
+            color: black; /* Black text color */
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .job-card button:hover {
+            background-color: #90caf9; /* Medium blue on hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .job-card {
+                width: calc(45% - 2rem); /* Adjust for tablets */
+            }
+        }
+        @media (max-width: 480px) {
+            .job-card {
+                width: calc(100% - 2rem); /* Full width on mobile */
+            }
+            header h1 {
+                font-size: 1.5rem;
+            }
+            header p {
+                font-size: 0.9rem;
+            }
+            .available-fields h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Pharmaceutical Manufacturing</h1>
+        <p>
+            Pharmaceutical Manufacturing involves the production of medicines, vaccines, and other healthcare products. 
+            This field focuses on quality control, regulatory compliance, and innovation in drug development. 
+            Freshers earn ₹4–10 lakh, mid-level professionals ₹10–25 lakh, and experienced professionals ₹25–60 lakh. Senior roles can exceed ₹1 crore annually.
+        </p>
+    </header>
+
+    <!-- Available Roles Section -->
+    <section class="available-fields">
+        <h2>Available Roles</h2>
+        <div class="container">
+            <!-- Job Card 1 -->
+            <div class="job-card">
+                <h2>Process Engineer</h2>
+                <p>Design and optimize manufacturing processes for pharmaceutical production.</p>
+                <button>Go to</button>
+            </div>
+
+            <!-- Job Card 2 -->
+            <div class="job-card">
+                <h2>Quality Assurance Specialist</h2>
+                <p>Ensure compliance with regulatory standards and maintain product quality.</p>
+                <button>Go to</button>
+            </div>
+
+            <!-- Job Card 3 -->
+            <div class="job-card">
+                <h2>Research Scientist</h2>
+                <p>Conduct experiments and research to develop new drugs and therapies.</p>
+                <button>Go to</button>
+            </div>
+
+            <!-- Job Card 4 -->
+            <div class="job-card">
+                <h2>Regulatory Affairs Manager</h2>
+                <p>Manage documentation and approvals required for drug manufacturing and distribution.</p>
+                <button>Go to</button>
+            </div>
+
+            <!-- Job Card 5 -->
+            <div class="job-card">
+                <h2>Production Supervisor</h2>
+                <p>Oversee daily operations in pharmaceutical manufacturing facilities.</p>
+                <button>Go to</button>
+            </div>
+
+            <!-- Job Card 6 -->
+            <div class="job-card">
+                <h2>Clinical Research Associate</h2>
+                <p>Monitor clinical trials and ensure adherence to protocols and regulations.</p>
+                <button>Go to</button>
+            </div>
+
+            <!-- Job Card 7 -->
+            <div class="job-card">
+                <h2>Validation Engineer</h2>
+                <p>Test and validate equipment and processes to meet regulatory requirements.</p>
+                <button>Go to</button>
+            </div>
+
+            <!-- Job Card 8 -->
+            <div class="job-card">
+                <h2>Supply Chain Manager</h2>
+                <p>Manage the logistics of raw materials and finished products in pharmaceutical manufacturing.</p>
+                <button>Go to</button>
+            </div>
+
+            <!-- Job Card 9 -->
+            <div class="job-card">
+                <h2>Formulation Scientist</h2>
+                <p>Develop formulations for new pharmaceutical products.</p>
+                <button>Go to</button>
+            </div>
+
+            <!-- Job Card 10 -->
+            <div class="job-card">
+                <h2>Bioprocess Engineer</h2>
+                <p>Specialize in biological processes for producing vaccines and biologics.</p>
+                <button>Go to</button>
+            </div>
+
+            <!-- Job Card 11 -->
+            <div class="job-card">
+                <h2>Health & Safety Officer</h2>
+                <p>Ensure workplace safety and compliance with health regulations.</p>
+                <button>Go to</button>
+            </div>
+
+            <!-- Job Card 12 -->
+            <div class="job-card">
+                <h2>Technical Writer</h2>
+                <p>Create detailed documentation for manufacturing processes and regulatory submissions.</p>
+                <button>Go to</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
