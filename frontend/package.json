@@ -1,0 +1,8 @@
+{
+  "name": "job-search-frontend",
+  "version": "1.0.0",
+  "description": "Job Search Portal Frontend",
+  "scripts": {
+    "start": "echo 'Frontend is static - open index.html'"
+  }
+}

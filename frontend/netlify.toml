@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/*"
+  to = "/login.html"
+  status = 200
+  force = false
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
