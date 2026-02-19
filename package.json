@@ -9,8 +9,7 @@
     "postinstall": "cd backend && npm install"
   },
   "engines": {
-    "node": "18.x",
-    "npm": ">=8.x"
+    "node": "24.x"
   },
   "repository": {
     "type": "git",
